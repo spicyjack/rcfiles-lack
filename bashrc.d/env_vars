@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# environment variables
+DEBEMAIL="user@example.com"
+DEBFULLNAME="Debian User"
+EDITOR="/usr/bin/vim"
+PATH="~/bin:$PATH:/usr/games:/usr/local/games"
+SOURCE_DIR="$HOME/src"
+export DEBEMAIL DEBFULLNAME EDITOR PATH SOURCE_DIR
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!

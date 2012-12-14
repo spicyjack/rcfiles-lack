@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# shell functions
+function ff {
+    find . -name "*$1*" -print
+} #find file from here
+
+function find_agent {
+    /usr/bin/find /tmp 2>/dev/null | grep agent
+} # find a list of agent sockets on the host
+
+function histgrep  {
+    history | grep "$@" | tail -22
+}   # history, one screenful please
+
+function jdate {
+    echo -n "The current julian date in GMT is: "
+    TZ=GMT date +%j
+}
+
+# for QEMU instances
+function pigfind {
+    find . -maxdepth 1 -type d -exec du -s '{}' \; 2>/dev/null | sort -n
+} # get the sizes of the subdirectories of $PWD, sort from smallest to largest
+
+function sudogrep {
+        sudo grep $1 /etc/sudoers | less
+} # look for the string passed in as arg 1 in the sudoers file
+
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# конец!

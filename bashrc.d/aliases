@@ -1,0 +1,12 @@
+#!/bin/bash
+# aliases
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vi='/usr/bin/vim'
+alias dir='ls --color=tty --classify'
+alias minicom='/usr/bin/minicom -c on'
+alias cls='cd; clear'
+alias datesync='sudo ntpdate pool.ntp.org'
+# vi: set filetype=sh shiftwidth=4 tabstop=4
+# fin!
