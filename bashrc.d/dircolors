@@ -6,7 +6,7 @@ if [ -x /opt/local/bin/gdircolors ]; then
     DIRCOLORS="/opt/local/bin/gdircolors"
     eval $($DIRCOLORS ~/.dircolors)
 elif [ -x /usr/bin/dircolors ]; then
-    alias dir='/bin/ls -F'
+    #alias dir='/bin/ls -F'
     DIRCOLORS="/usr/bin/dircolors"
     eval $($DIRCOLORS ~/.dircolors)
 fi
