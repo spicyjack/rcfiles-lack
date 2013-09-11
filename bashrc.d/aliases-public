@@ -1,0 +1,17 @@
+#!/bin/bash
+# public aliases
+alias cdir='ls --color=yes --classify'
+alias cless='less -R'
+alias cls='cd; clear'
+alias cp='cp -i'
+alias datesync='sudo ntpdate pool.ntp.org'
+alias dir='ls --color=tty --classify'
+# for parsing epoch timestamps in nagios logs
+alias ilf='perl -MPOSIX -pe "s/(\d+)/strftime(\"%b %d %H:%M:%S\",
+  localtime(\$1))/e"'
+alias lessr='less -R'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# vim: set filetype=sh shiftwidth=2 tabstop=2:
+# fin!
