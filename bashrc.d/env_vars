@@ -1,12 +1,41 @@
 #!/bin/bash
 
 # environment variables
-DEBEMAIL="user@example.com"
+DEBEMAIL="debian@example.com"
 DEBFULLNAME="Debian User"
-EDITOR="/usr/bin/vim"
-PATH="~/bin:$PATH:/usr/games:/usr/local/games"
-SOURCE_DIR="$HOME/src"
-export DEBEMAIL DEBFULLNAME EDITOR PATH SOURCE_DIR
+CVSROOT=/home/cvs
+CVS_RSH=/usr/bin/ssh
+RSYNC_RSH=/usr/bin/ssh
+# for building Gtk+3
+XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+# for building Gtk3 Perl module
+GI_TYPELIB_PATH="/usr/local/lib/girepository-1.0"
+
+if [ -x /usr/local/bin/vim ]; then
+    EDITOR=/usr/local/bin/vim
+else
+    EDITOR=/usr/bin/vim
+fi
+#PATH=~/bin:$PATH:/opt/local/bin:/opt/local/sbin:/usr/games:/usr/local/games
+ADDITIONAL_PATHS="/usr/games /usr/local/games"
+if [ -d "/home/user/bin" ]; then
+    # Linux hosts
+    ADDITIONAL_PATHS="/home/user/bin $ADDITIONAL_PATHS"
+fi
+
+# go through all of the addtional paths and see what needs to be added
+for ADDPATH in $(echo ${ADDITIONAL_PATHS});
+do
+    if [ $(echo ${PATH} | grep -c ${ADDPATH}) -eq 0 ]; then
+        PATH=${ADDPATH}:$PATH
+    #else
+    #    echo "Path: $ADDPATH already exists in \$PATH"
+    fi
+done
+
+unset ADDITIONAL_PATHS ADDPATH
+export DEBEMAIL DEBFULLNAME IRCNICK IRCNAME IRCSERVER \
+    CVSROOT CVS_RSH EDITOR PATH XML_CATALOG_FILES GI_TYPELIB_PATH
 
 # vi: set filetype=sh shiftwidth=4 tabstop=4
 # fin!
